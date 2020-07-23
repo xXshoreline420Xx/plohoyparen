@@ -12,15 +12,10 @@ end
 
 local function on_paint()
 
-    if not InitFont then
-        if not Render.IsFont(FontNameLol) then
-            Render.LoadFont(FontNameLol, PathToFont, 32)
-        end
+    InitFont()
 
 end
 
 Render.Text("sample text", 50, 50, 32, Color.new(255, 255, 255, 255), true, true, "FontNameLol")
 
-end
-
-Hack.RegisterCallback("PaintTraverse", InitFont)
+Hack.RegisterCallback("PaintTraverse", on_paint)
