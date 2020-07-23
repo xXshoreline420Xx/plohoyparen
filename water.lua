@@ -7,8 +7,20 @@ function InitFont()
 	if (not FontInited) then
         Render.LoadFont("FontNameLol", CustomFont, 32)
         FontInited = true
-        Render.Text_1("sample text", 50, 50, 32, Color.new(255, 255, 255, 255), true, true, "FontNameLol")
 	end
 end
 
-Hack.RegisterCallback("PaintTraverse", on_paint)
+local function on_paint()
+
+    if not InitFont then
+        if not Render.IsFont(FontNameLol) then
+            Render.LoadFont(FontNameLol, PathToFont, 32)
+        end
+
+end
+
+Render.Text("sample text", 50, 50, 32, Color.new(255, 255, 255, 255), true, true, "FontNameLol")
+
+end
+
+Hack.RegisterCallback("PaintTraverse", InitFont)
